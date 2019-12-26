@@ -6,19 +6,19 @@ const Nav = () => {
     return (
         <nav className={classes.nav}>
             <div className={classes.item}>
-                <NavLink to="/profile">Profile</NavLink>
+                <NavLink to="/profile" activeClassName={classes.active}>Profile</NavLink>
             </div>
 
             <div className={classes.item}>
-                <NavLink to={'/messages'}>Messages</NavLink>
+                <NavLink to={'/messages'} activeClassName={classes.active}>Messages</NavLink>
             </div>
 
             <div className={classes.item}>
-                <NavLink to={'/news'}>News</NavLink>
+                <NavLink to={'/news'} activeClassName={classes.active}>News</NavLink>
             </div>
 
             <div className={classes.item}>
-                <NavLink to={'/settings'}>Settings</NavLink>
+                <NavLink to={'/settings'} activeClassName={classes.active}>Settings</NavLink>
             </div>
         </nav>
     );

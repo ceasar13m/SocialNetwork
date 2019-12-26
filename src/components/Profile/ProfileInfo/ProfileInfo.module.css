@@ -1,0 +1,13 @@
+.profileInfo{
+    color: white;
+}
+
+.profileInfo img{
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.descriptionBlock{
+    padding: 10px;
+}
