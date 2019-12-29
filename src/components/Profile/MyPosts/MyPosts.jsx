@@ -1,35 +1,43 @@
 import React from "react";
 import classes from './MyPosts.module.css'
 import Post from "./Post/Post";
-import Message from "../../Dialogs/Dialog/Message";
 
 
-const MyPosts = (props) => {
+class MyPosts extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.inputTextRef = React.createRef();
+        this.addPost = this.addPost.bind(this);
+    }
 
 
-    let posts = props.props.props.post.map((post) => {
+    posts = this.props.posts.map((post) => {
             return <Post message={post.message}/>
         }
     )
 
-    return (
-        <div className={classes.myPosts}>
-            <div>
-                <textarea id='textura'></textarea>
+
+    addPost() {
+        this.props.dataController.addPost(this.inputTextRef.current.value);
+    }
+
+    render() {
+        return (
+            <div className={classes.myPosts}>
+
+                <input type="text" ref={this.inputTextRef}/>
+                <input type="button" value="Отправить" onClick={this.addPost}/>
+
+
+                <div className={classes.posts}>
+                    {this.posts}
+                </div>
+
             </div>
 
-            <div>
-                <button>add</button>
-            </div>
-
-
-            <div className={classes.posts}>
-                {posts}
-            </div>
-
-        </div>
-
-    )
+        )
+    }
 }
 
 export default MyPosts;

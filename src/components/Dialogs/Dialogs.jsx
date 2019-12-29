@@ -5,28 +5,32 @@ import DialogItem from "./Dialog/DialogItem";
 import Message from "./Dialog/Message";
 
 
-const Dialogs = (props) => {
-    let dialogItems = props.dialogs.map((dialog) => {
-            return <DialogItem name={dialog.name} id={dialog.id}/>
-        }
-    )
+class Dialogs extends React.Component {
 
 
-    let messages = props.messages.map((message) => {
-            return <Message message={message.message}/>
-        }
-    )
-    return (
-        <div className={classes.dialogs}>
-            <div className={classes.dialogsItems}>
-                {dialogItems}
+    render() {
+        this.dialogItems = this.props.dialogs.map((dialog) => {
+                return <DialogItem name={dialog.name} id={dialog.id}/>
+            }
+        )
+
+        this.messages = this.props.messages.map((message) => {
+                return <Message message={message.message}/>
+            }
+        )
+
+        return (
+            <div className={classes.dialogs}>
+                <div className={classes.dialogsItems}>
+                    {this.dialogItems}
+                </div>
+
+                <div className={classes.messages}>
+                    {this.messages}
+                </div>
             </div>
-
-            <div className={classes.messages}>
-                {messages}
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default Dialogs;
