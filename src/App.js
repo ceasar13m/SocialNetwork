@@ -6,6 +6,7 @@ import Nav from "./components/Navbar/Nav";
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 import DataController from './redux/DataController';
+import SignUp from "./components/Auth/SignUp";
 
 
 
@@ -27,10 +28,11 @@ class App extends React.Component{
             <BrowserRouter>
                 <div className={classes.wrapper}>
                     <Header/>
-                    <Nav/>
+                    {/*<Nav/>*/}
                     <div className={classes.wrapperContent}>
-                        <Route path='/profile' render={() => <Profile posts={this.state.profilePage.posts} dataController={this.dataController}/>}/>
-                        <Route path='/messages' render={()=> <Dialogs dialogs={this.state.dialogsPage.dialogs} dataController={this.dataController} messages={this.state.dialogsPage.messages} />}/>
+                        <Route path='/signUp' render={() => <SignUp  dataController={this.dataController}/>}/>
+                        {/*<Route path='/profile' render={() => <Profile posts={this.state.profilePage.posts} dataController={this.dataController}/>}/>*/}
+                        {/*<Route path='/messages' render={()=> <Dialogs dialogs={this.state.dialogsPage.dialogs} dataController={this.dataController} messages={this.state.dialogsPage.messages} />}/>*/}
                     </div>
                 </div>
             </BrowserRouter>
