@@ -23,7 +23,6 @@ class MyPosts extends React.Component {
         return (
             <div className={classes.myPosts}>
                 <input type="text" ref={this.inputTextRef}/>
-                <input type="text" ref={this.inputTextRef}/>
                 <input type="button" value="Отправить" onClick={this.addPost}/>
                 <div className={classes.posts}>
                     {this.posts}
