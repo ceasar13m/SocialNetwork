@@ -10,22 +10,31 @@ class MyPosts extends React.Component {
         this.addPost = this.addPost.bind(this);
     }
 
-    posts = this.props.posts.map((post) => {
-            return <Post message={post.message}/>
-        }
-    )
+
 
     addPost() {
-        this.props.dataController.addPost(this.inputTextRef.current.value);
+        let post = {
+            id: 10,
+            message: this.inputTextRef.current.value,
+            likeCounter: 29
+        }
+        this.props.dataController.addPost(post);
+        this.setState({posts: post});
     }
 
+
     render() {
+        let posts = this.props.posts.map((post) => {
+                return <Post message={post.message}/>
+            }
+        )
+
         return (
             <div className={classes.myPosts}>
                 <input type="text" ref={this.inputTextRef}/>
                 <input type="button" value="Отправить" onClick={this.addPost}/>
                 <div className={classes.posts}>
-                    {this.posts}
+                    {posts}
                 </div>
             </div>
         )

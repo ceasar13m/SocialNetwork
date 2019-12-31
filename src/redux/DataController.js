@@ -31,12 +31,7 @@ class DataController {
         this.App = App;
     }
     addPost(newPost) {
-        let post = {
-            id: 10,
-            message: newPost,
-            likeCounter: 29
-        }
-        state.profilePage.posts.push(post);
+        state.profilePage.posts.push(newPost);
         this.App.onDataChanged(state);
     }
     getState() {
