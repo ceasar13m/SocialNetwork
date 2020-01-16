@@ -1,4 +1,5 @@
 let state = {
+    token: undefined,
 
     profilePage: {
         posts: [
@@ -34,8 +35,24 @@ class DataController {
         state.profilePage.posts.push(newPost);
         this.App.onDataChanged(state);
     }
+
+    addMessage(newMessage) {
+        state.dialogsPage.messages.push(newMessage);
+        this.App.onDataChanged(state);
+    }
+
     getState() {
         return state;
+    }
+
+    getToken() {
+        return state.token;
+    }
+
+
+    setToken(token) {
+        state.token = token;
+        this.App.onDataChanged(state);
     }
 }
 

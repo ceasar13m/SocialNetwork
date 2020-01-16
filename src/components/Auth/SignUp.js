@@ -1,54 +1,37 @@
 import React from "react";
 import classes from "./SignUp.module.css";
+import AuthRestRequest from "../../redux/AuthRestRequest";
 
 
 class SignUp extends React.Component {
-
 
     constructor(props) {
         super(props);
         this.usernameRef = React.createRef();
         this.passwordRef = React.createRef();
-        this.signUp = this.signUp.bind(this);
+        this.rest = new AuthRestRequest();
+        this.click = this.click.bind(this);
     }
 
-
-    signUp() {
-        let signUpMessage = {
-            username: this.usernameRef.current.value,
-            password: this.passwordRef.current.value
-        }
-
-
-        let request = new XMLHttpRequest();
-        request.open("POST", "http://localhost:8080/signUp", true);
-
-        let jsonString = JSON.stringify(signUpMessage);
-        request.responseType = 'json';
-        request.onreadystatechange = () => {
-            if (this.readyState === this.DONE && request.readyState === 4) {
-                let tokenString = JSON.stringify(request.response);
-                alert(tokenString);
-            }
-        }
-        request.send(jsonString);
-
-
-
+    click() {
+        let newAuth = new AuthRestRequest();
+        let token = newAuth.signUp(this.usernameRef, this.passwordRef);
+        alert(JSON.stringify(token));
     }
+
 
     render() {
         return (
             <div className={classes.signUp}>
                 <div className={classes.loginInput}>
-                    <input type="text" ref={this.usernameRef}/>
+                    <input type="text" required ref={this.usernameRef}/>
                 </div>
 
                 <div className={classes.passwordInput}>
-                    <input type="password" ref={this.passwordRef}/>
+                    <input type="password" required ref={this.passwordRef}/>
                 </div>
 
-                <input type="button" value="SignUp" onClick={this.signUp}/>
+                <input type="button" value="SignUp" onClick={this.click}/>
 
             </div>
         )
